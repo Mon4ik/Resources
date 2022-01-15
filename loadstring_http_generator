@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Loadstring from pastebin generator</title>
+</head>
+<body>
+	<h1>Lua code generator</h1>
+	<hr>
+	<div>
+		<input type="text" placeholder="http://pastebin.com/AbCd12" id="generateLink">
+		<button id="generate">
+			Generate
+		</button>
+	</div>
+	<div>
+		<input type="text" placeholder="http://pastebin.com/raw/AbCd12" id="generateRawLink">
+		<button id="generateRaw">
+			Generate
+		</button>
+	</div>
+
+	<br>
+
+	<label>Lua code:</label><br>
+	<textarea id="code" style="width: 563px; height: 77px;">
+
+	</textarea>
+
+	<script>
+		Array.prototype.insert = function ( index, item ) {
+    		this.splice( index, 0, item );
+		};
+
+		function getLua(link) {
+			return `loadstring(game:HttpGet("${link}", true))()`
+		}
+
+		document.querySelector("#generate").addEventListener("click", function(e) {
+			let link = document.querySelector("#generateLink").value
+
+			link_splitted = link.split('/')
+			link_splitted.insert(link_splitted.length - 1, "raw")
+			link = link_splitted.join('/')
+
+			document.querySelector("#code").innerText = getLua(link)
+		});
+
+		document.querySelector("#generateRaw").addEventListener("click", function(e) {
+			let link = document.querySelector("#generateRawLink").value
+
+			document.querySelector("#code").innerText = getLua(link)
+		});
+	</script>
+</body>
+</html>
