@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>куар код</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Зачем ты отсканировал QR-Code 🤨</h1>
+        <h2>Типо тут должны быть смешные картинки</h2>
+    
+        <button onclick="nextgo();">Принять риск и идти дальше</button>
+    </div>
+    <div id="secret" hidden>
+        <img src="https://mon4ik.github.io/Resources/Screenshot_20220102-144927_TikTok.jpg" style="width: 370px; height: 450px;">
+        <h1>Бу! ахахахаахаххахахах</h1>
+        <button onclick="nextgo2();">Давай ещё</button>
+        
+    </div>
 
+    <div id="secret2" hidden>
+        <video style="width: 512px; height: 512px;" controls="controls">
+            <source src="https://mon4ik.github.io/Resources/eggman.mp4">
+        </video>
+
+        <p>Ладно, пока</p>
+        <!-- <button onclick="nextgo2();">Давай ещё</button> -->
+    </div>
+
+    <script>
+        function nextgo() {
+            document.querySelector("#content").hidden = true;
+            document.querySelector("#secret").hidden = false;
+        }
+
+        function nextgo2() {
+            document.querySelector("#secret").hidden = true;
+            document.querySelector("#secret2").hidden = false;
+        }
+    </script>
+</body>
+</html>
